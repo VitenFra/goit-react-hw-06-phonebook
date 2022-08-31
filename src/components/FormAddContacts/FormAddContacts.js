@@ -1,5 +1,14 @@
 import PropTypes from 'prop-types';
 import css from './FormAddContact.module.css';
+import { useSelector,useDispatch } from "react-redux";
+import { addContact } from "Redux/phoneBookActions";
+import shortid from 'shortid';
+
+
+
+
+
+
 
 export const FormAddContacts = ({onSubmit}) => {
   
@@ -7,11 +16,37 @@ export const FormAddContacts = ({onSubmit}) => {
       e.preventDefault();
       const name = e.currentTarget.elements.name.value;
       const number = e.currentTarget.elements.number.value;
-      onSubmit({name, number})
+      formSubmitHandler({name, number})
       
       e.currentTarget.reset();
       
+
+      
     };
+
+
+    const dispath = useDispatch();
+    const contacts = useSelector(state => state.items);
+    
+  
+    const formSubmitHandler = data => {
+      
+      if (contacts.find(contact => data.name.toLowerCase() === contact.name.toLowerCase())){
+        alert(data.name + ' вже є в контактах' )
+        useSelector = data.name;
+      }
+      else {
+        dispath(addContact({ name:data.name, number:data.number, id: shortid() }))
+        console.log(contacts)
+        
+      }
+    };
+
+
+
+
+
+    
     
   return (
             <>
@@ -22,9 +57,11 @@ export const FormAddContacts = ({onSubmit}) => {
             className={css.formInput}
               type="text"
               name="name"
+              required={true}
+              
               pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
               title="Назва може містити лише літери, апостроф, тире та пробіли. Наприклад Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
-                required  
+                
                   />
           </label>
            <label className={css.formInputTitle}>
