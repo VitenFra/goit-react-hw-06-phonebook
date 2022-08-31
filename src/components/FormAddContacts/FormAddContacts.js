@@ -58,7 +58,7 @@ export const FormAddContacts = ({onSubmit}) => {
               type="text"
               name="name"
               required={true}
-              
+              onChange={formSubmitHandler}
               pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
               title="Назва може містити лише літери, апостроф, тире та пробіли. Наприклад Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
                 
