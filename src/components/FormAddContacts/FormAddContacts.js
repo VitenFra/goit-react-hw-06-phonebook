@@ -76,7 +76,7 @@ export const FormAddContacts = ({onSubmit}) => {
             />
           </label>
           
-          <button  className ={css.addBtn} type="submit">Додати</button>
+          <button  className ={css.addBtn} type="submit">Додати+</button>
         </form></>
         )
     
