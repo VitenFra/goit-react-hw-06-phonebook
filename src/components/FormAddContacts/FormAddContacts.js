@@ -65,7 +65,7 @@ export const FormAddContacts = ({onSubmit}) => {
                   />
           </label>
            <label className={css.formInputTitle}>
-           Номер
+           номер
             <input
             className={css.formInput}
                 type="tel"
