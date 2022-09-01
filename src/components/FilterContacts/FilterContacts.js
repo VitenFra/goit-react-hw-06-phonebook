@@ -1,5 +1,4 @@
 import css from './FilterContacts.module.css';
-import PropTypes from 'prop-types';
 import { useDispatch,  } from 'react-redux';
 import { filter } from 'Redux/phoneBookActions';
 
@@ -23,7 +22,4 @@ export const FilterContacts = () => {
     </>
     )
 };
-FilterContacts.propTypes = {
-    contact: PropTypes.string.isRequired,
-    filter: PropTypes.func.isRequired,
-}
+
